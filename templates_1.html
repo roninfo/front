@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta charset="UTF-8">
-	<title>First template with Underscore</title>
-</head>
-<body>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello World</title>
+        <script src="lib/jquery-min.js"></script>
+        <script src="lib/underscore-min.js"></script>
+        <script src="lib/backbone-min.js"></script>
+        <script>
+            $(document).ready(function() {
 
-</body>
+                var PostView = Backbone.View.extend({
+                    tagName: 'article',
+                    className: 'page-posts',
+                    template: _.template("<h2><%= title %></h2><p><%= content %></p>"),
+                    render: function() {
+                        this.$el.html(this.template({title: "First Template", content: "Mega Conteudo do Post"}));
+                    }
+                });
+
+                var postView = new PostView();
+                postView.render();
+                console.log(postView.el);
+
+            });
+        </script>
+    </head>
+    <body></body>
 </html>
