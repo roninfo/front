@@ -8,19 +8,35 @@
         <script src="lib/backbone-min.js"></script>
         <script>
             $(document).ready(function() {
-
+                //http://imasters.com.br/artigo/25066/javascript/serie-backbonejs-parte-02-view/
                 var PostView = Backbone.View.extend({
                     tagName: 'article',
                     className: 'page-posts',
                     template: _.template("<h2><%= title %></h2><p><%= content %></p>"),
                     render: function() {
                         this.$el.html(this.template({title: "First Template", content: "Mega Conteudo do Post"}));
+                    },
+                    events: {
+                        "dblclick" : "fullScreen",
+                        "click #add-button" : "newPost",
+                        "blur #username" :"searchUsername"
+                    },
+                    newPost: function() {
+                        alert("Adicionar novo Post");
+                    },
+                    searchUsername: function(e) {
+                        alert("Procura o usuario" + e.target.value);
+                    },
+                    fullScreen: function() {
+                        alert("full screen");
                     }
                 });
 
+
+
                 var postView = new PostView();
                 postView.render();
-                console.log(postView.el);
+                $('body').append(postView.el);
 
             });
         </script>
