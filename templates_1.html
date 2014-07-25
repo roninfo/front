@@ -12,7 +12,7 @@
                 var PostView = Backbone.View.extend({
                     tagName: 'article',
                     className: 'page-posts',
-                    template: _.template("<h2><%= title %></h2><p><%= content %></p>"),
+                    template: _.template("<h2><%= title %></h2><p><%= content %></p><p><input id='username' type='text' /></p><p><input id='add-button' type='button' value='clique' /></p>"),
                     render: function() {
                         this.$el.html(this.template({title: "First Template", content: "Mega Conteudo do Post"}));
                     },
@@ -32,8 +32,6 @@
                     }
                 });
 
-
-
                 var postView = new PostView();
                 postView.render();
                 $('body').append(postView.el);
@@ -41,5 +39,6 @@
             });
         </script>
     </head>
-    <body></body>
+    <body>
+     </body>
 </html>
